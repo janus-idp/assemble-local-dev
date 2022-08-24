@@ -1,0 +1,70 @@
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.dbeaver
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+### VS Code ###
+.vscode/
+
+
+### ESLint ###
+.eslintcache
+
+### Logs ###
+*.log*
+
+### Package Files ###
+*.jar
+*.war
+*.ear
+*.db
+
+### Windows ###
+# Windows image file caches
+Thumbs.db
+
+# Folder config file
+Desktop.ini
+
+### Mac OSX ###
+.DS_Store
+.svn
+
+# Thumbnails
+._*
+
+### Node ###
+/node/
+node_tmp/
+node_modules/
+npm-debug.log.*
+/.awcache/*
+/.cache-loader/*
+
+### SASS ###
+.sass-cache/

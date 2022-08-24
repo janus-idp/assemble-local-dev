@@ -1,0 +1,61 @@
+version: '3.6'
+
+services:
+  postgres:
+    image: postgres:14.5
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./config/postgres/docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgre_init.sql
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+
+  pgadmin:
+    image: dpage/pgadmin4:6.12
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@domain.local
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: 'False'
+    volumes:
+      - ./config/pgadmin/servers.json:/pgadmin4/servers.json
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - "9000:80"
+    networks:
+      - postgres
+    depends_on:
+      - postgres
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:19.0.1
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
+      KC_DB_SCHEMA: public
+      KC_DB_USERNAME: postgres
+      KC_DB_PASSWORD: postgres
+    networks:
+      - postgres
+    volumes:
+      - ./config/keycloak/realm-export.json:/opt/keycloak/data/import/realm-export.json
+    ports:
+      - "3434:8080"
+    depends_on:
+      - postgres
+    command:
+      - start-dev --import-realm
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+  pgdata:
+  pgadmin:
