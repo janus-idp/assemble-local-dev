@@ -727,6 +727,146 @@
     } ],
     "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
     "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
+  },
+  {
+    "id": "9538af60-93a7-4e6f-b5e6-a5a95756bc75",
+    "clientId": "assemble",
+    "name": "assemble",
+    "description": "",
+    "rootUrl": "",
+    "adminUrl": "",
+    "baseUrl": "",
+    "surrogateAuthRequired": false,
+    "enabled": true,
+    "alwaysDisplayInConsole": true,
+    "clientAuthenticatorType": "client-secret",
+    "secret": "**********",
+    "redirectUris": [
+      "http://localhost:3000"
+    ],
+    "webOrigins": [],
+    "notBefore": 0,
+    "bearerOnly": false,
+    "consentRequired": false,
+    "standardFlowEnabled": true,
+    "implicitFlowEnabled": false,
+    "directAccessGrantsEnabled": true,
+    "serviceAccountsEnabled": true,
+    "authorizationServicesEnabled": true,
+    "publicClient": false,
+    "frontchannelLogout": true,
+    "protocol": "openid-connect",
+    "attributes": {
+      "oidc.ciba.grant.enabled": "false",
+      "client.secret.creation.time": "1661781648",
+      "backchannel.logout.session.required": "true",
+      "display.on.consent.screen": "false",
+      "oauth2.device.authorization.grant.enabled": "false",
+      "backchannel.logout.revoke.offline.tokens": "false"
+    },
+    "authenticationFlowBindingOverrides": {},
+    "fullScopeAllowed": true,
+    "nodeReRegistrationTimeout": -1,
+    "protocolMappers": [
+      {
+        "id": "b94fce47-2b2d-4757-a79a-dac1a2641097",
+        "name": "Client Host",
+        "protocol": "openid-connect",
+        "protocolMapper": "oidc-usersessionmodel-note-mapper",
+        "consentRequired": false,
+        "config": {
+          "user.session.note": "clientHost",
+          "id.token.claim": "true",
+          "access.token.claim": "true",
+          "claim.name": "clientHost",
+          "jsonType.label": "String"
+        }
+      },
+      {
+        "id": "dca42aa6-8cf6-4117-a0a0-b602bb7f1bd0",
+        "name": "Client ID",
+        "protocol": "openid-connect",
+        "protocolMapper": "oidc-usersessionmodel-note-mapper",
+        "consentRequired": false,
+        "config": {
+          "user.session.note": "clientId",
+          "id.token.claim": "true",
+          "access.token.claim": "true",
+          "claim.name": "clientId",
+          "jsonType.label": "String"
+        }
+      },
+      {
+        "id": "91d9ccfc-6f18-4b70-9ad9-c08475d9b2c2",
+        "name": "Client IP Address",
+        "protocol": "openid-connect",
+        "protocolMapper": "oidc-usersessionmodel-note-mapper",
+        "consentRequired": false,
+        "config": {
+          "user.session.note": "clientAddress",
+          "id.token.claim": "true",
+          "access.token.claim": "true",
+          "claim.name": "clientAddress",
+          "jsonType.label": "String"
+        }
+      }
+    ],
+    "defaultClientScopes": [
+      "web-origins",
+      "acr",
+      "profile",
+      "roles",
+      "email"
+    ],
+    "optionalClientScopes": [
+      "address",
+      "phone",
+      "offline_access",
+      "microprofile-jwt"
+    ],
+    "authorizationSettings": {
+      "allowRemoteResourceManagement": true,
+      "policyEnforcementMode": "ENFORCING",
+      "resources": [
+        {
+          "name": "Default Resource",
+          "type": "urn:assemble:resources:default",
+          "ownerManagedAccess": false,
+          "attributes": {},
+          "_id": "77844700-440d-48e4-a4f1-4c1014e30ed9",
+          "uris": [
+            "/*"
+          ]
+        }
+      ],
+      "policies": [
+        {
+          "id": "b5723da2-899f-49b2-878f-eefe62275f5d",
+          "name": "Default Policy",
+          "description": "A policy that grants access only for users within this realm",
+          "type": "js",
+          "logic": "POSITIVE",
+          "decisionStrategy": "AFFIRMATIVE",
+          "config": {
+            "code": "// by default, grants any permission associated with this policy\n$evaluation.grant();\n"
+          }
+        },
+        {
+          "id": "44cf2d61-f0ea-40d0-b0d8-388756249364",
+          "name": "Default Permission",
+          "description": "A permission that applies to the default resource type",
+          "type": "resource",
+          "logic": "POSITIVE",
+          "decisionStrategy": "UNANIMOUS",
+          "config": {
+            "defaultResourceType": "urn:assemble:resources:default",
+            "applyPolicies": "[\"Default Policy\"]"
+          }
+        }
+      ],
+      "scopes": [],
+      "decisionStrategy": "UNANIMOUS"
+    }
   } ],
   "clientScopes" : [ {
     "id" : "91e34291-52b4-4705-8a98-83b0c8daa210",
