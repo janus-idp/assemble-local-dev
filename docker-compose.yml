@@ -7,7 +7,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     volumes:
-      - ./config/postgres/docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgre_init.sql
+      - ./docker/config/postgres/docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgre_init.sql
       - pgdata:/var/lib/postgresql/data
     ports:
       - "5432:5432"
@@ -22,7 +22,7 @@ services:
       PGADMIN_CONFIG_SERVER_MODE: 'False'
       PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: 'False'
     volumes:
-      - ./config/pgadmin/servers.json:/pgadmin4/servers.json
+      - ./docker/config/pgadmin/servers.json:/pgadmin4/servers.json
       - pgadmin:/var/lib/pgadmin
     ports:
       - "9000:80"
@@ -44,7 +44,7 @@ services:
     networks:
       - postgres
     volumes:
-      - ./config/keycloak/realm-export.json:/opt/keycloak/data/import/realm-export.json
+      - ./docker/config/keycloak/realm-export.json:/opt/keycloak/data/import/realm-export.json
     ports:
       - "3434:8080"
     depends_on:
