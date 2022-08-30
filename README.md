@@ -12,7 +12,7 @@ If you need to query the database, PG Admin is available at [http://localhost:90
 #### oAuth2/OIDC Provider
 Keycloak v19.0.1 is available at [http://localhost:3434](http://localhost:3434) using the username: admin and password: admin
 
-The setup comes with a pre-configured client `Assemble` and 7 differents users. One per persona.
+The setup comes with a pre-configured client `Assemble` and 7 different users. One per persona.
 
 - dev
 - dev_lead
@@ -28,19 +28,28 @@ The password is the username.
 - ~~Assemble is available at http://localhost:3000~~
 - ~~APIs are available at http://localhost:8080~~
 
+## Requirements
+
+Please make sure that you have the following installed on your machine:
+
+- Git
+- Docker or Podman
+- Docker Compose or Podman compose
 
 ## Getting started
 
-### Clone the repository
+### Get the source code
 You need a git client (command line or IDE) to clone the source code:
 
 ```
 git clone https://github.com/halkyonio/assemble-local-dev.git
 ```
 
+This will clone the complete source to your local machine.
+
 ### How to start Assemble
 
-You need Docker Desktop with docker compose installed OR Podman Desktop with podman compose.
+You can use Docker or Podman.
 
 
 #### Start Assemble
