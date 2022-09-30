@@ -43,9 +43,17 @@ You need a git client (command line or IDE) to clone the source code:
 
 ```
 git clone https://github.com/halkyonio/assemble-local-dev.git
+
+git clone https://github.com/halkyonio/assemble-backstage.git
 ```
 
-This will clone the complete source to your local machine.
+Both the `assemble-local-dev` and the `assemble-backstage` repos should be cloned into the same folder and be located right next to each other.  For example:
+```
+~/assemble/assemble-backstage
+~/assemble/assemble-local-dev
+```
+
+If they aren't you can set an environment variable `ASSEMBLE_BACKSTAGE` to the location of the `assemble-backstage` folder.
 
 ### How to start Assemble
 
@@ -56,18 +64,16 @@ You can use Docker or Podman.
 
 You can start all the Assemble containers with the following command:
 
-**For Docker Compose**
 ```shell
-docker-compose up -d --remove-orphans
+./localdev.sh
 ```
 
-**For Podman Compose**
-```shell
-podman-compose up -d 
-```
+This should be able to detect if you are using Podman or Docker.  If it doesn't for some reason you can set an environment variable of `COMPOSE_ENGINE` to `docker` or `podman`
 
 
 Depending on your computer it could take several seconds/minutes. Once everything is started, you can access the app at:
+
+http://localhost:3000
 
 #### Stop Assemble
 

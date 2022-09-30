@@ -52,6 +52,32 @@ services:
     command:
       - start-dev --import-realm
 
+  backstage:
+    image: node:16
+    command:
+      - bash
+      - '-c'
+      - yarn install && yarn dev
+    environment:
+      APP_CONFIG_app_listen_host: 0.0.0.0
+      APP_CONFIG_backend_listen_host: 0.0.0.0
+      APP_CONFIG_backend_database_client: pg
+      APP_CONFIG_backend_database_connection_host: postgres
+      APP_CONFIG_backend_database_connection_port: 5432
+      APP_CONFIG_backend_database_connection_user: postgres
+      APP_CONFIG_backend_database_connection_password: postgres
+    volumes:
+      - ${BACKSTAGE:-../assemble-backstage}:/workspace${CONTAINER_VOLUME_OPTIONS}
+    working_dir: /workspace
+    networks:
+      - postgres
+    ports:
+      - "3000:3000"
+      - "7007:7007"
+    depends_on:
+      - postgres
+      - keycloak
+
 networks:
   postgres:
     driver: bridge
