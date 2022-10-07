@@ -7,8 +7,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     volumes:
-      - ./docker/config/postgres/docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgre_init.sql
-      - pgdata:/var/lib/postgresql/data
+      - ./docker/config/postgres/docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgre_init.sql${CONTAINER_VOLUME_OPTIONS}
+      - pgdata:/var/lib/postgresql/data${CONTAINER_VOLUME_OPTIONS}
     ports:
       - "5432:5432"
     networks:
@@ -22,8 +22,8 @@ services:
       PGADMIN_CONFIG_SERVER_MODE: 'False'
       PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: 'False'
     volumes:
-      - ./docker/config/pgadmin/servers.json:/pgadmin4/servers.json
-      - pgadmin:/var/lib/pgadmin
+      - ./docker/config/pgadmin/servers.json:/pgadmin4/servers.json${CONTAINER_VOLUME_OPTIONS}
+      - pgadmin:/var/lib/pgadmin${CONTAINER_VOLUME_OPTIONS}
     ports:
       - "9000:80"
     networks:
@@ -44,14 +44,13 @@ services:
     networks:
       - postgres
     volumes:
-      - ./docker/config/keycloak/realm-export.json:/opt/keycloak/data/import/realm-export.json
+      - ./docker/config/keycloak/realm-export.json:/opt/keycloak/data/import/realm-export.json${CONTAINER_VOLUME_OPTIONS}
     ports:
-      - "3434:8080"
+      - "8080:8080"
     depends_on:
       - postgres
     command:
       - start-dev --import-realm
-
   backstage:
     image: node:16
     command:
@@ -60,7 +59,9 @@ services:
       - yarn install && yarn dev
     environment:
       APP_CONFIG_app_listen_host: 0.0.0.0
+      APP_CONFIG_app_baseUrl: http://keycloak:4180
       APP_CONFIG_backend_listen_host: 0.0.0.0
+      APP_CONFIG_backend_cors_origin: http://keycloak:4180
       APP_CONFIG_backend_database_client: pg
       APP_CONFIG_backend_database_connection_host: postgres
       APP_CONFIG_backend_database_connection_port: 5432
@@ -77,7 +78,27 @@ services:
     depends_on:
       - postgres
       - keycloak
-
+  oauth2-proxy: 
+    image: quay.io/oauth2-proxy/oauth2-proxy:v7.3.0
+    ports:
+      - "4180:4180"
+    restart: on-failure
+    volumes:
+      - ./docker/config/oauth2-proxy/proxy.yaml:/proxy.yaml${CONTAINER_VOLUME_OPTIONS}
+    command:
+      - "--alpha-config"
+      - "/proxy.yaml"
+    environment:
+      OAUTH2_PROXY_COOKIE_SECURE: "false"
+      OAUTH2_PROXY_COOKIE_SECRET: "VFRdF6h14gEg37ZwP37_y6pfJo3rzyZeCqToCro-Nf8="
+      OAUTH2_PROXY_EMAIL_DOMAINS: "*"
+      OAUTH2_PROXY_SKIP_PROVIDER_BUTTON: "true"
+      OAUTH2_PROXY_REDIRECT_URL: http://keycloak:4180/oauth2/callback
+    depends_on:
+      - keycloak
+      - backstage
+    networks:
+      - postgres
 networks:
   postgres:
     driver: bridge

@@ -39,7 +39,7 @@ if [ $? -ne 0 ]; then
         printf "Docker/Podman Compose is not currently installed or is not in your PATH. Go HERE to install docker compose: https://docs.docker.com/compose/install/ or here for podman compose: https://github.com/containers/podman-compose\n\n"
     else
         ENGINE=podman
-        export EXTRA_COMPOSE_OPTIONS="-d"
+        export EXTRA_COMPOSE_OPTIONS=""
         printf "Using Podman\n"
     fi
 fi
@@ -67,5 +67,6 @@ fi
 
 printf "In a few minutes, the following services will be available:\n"
 printf "\thttp://localhost:9000/ - PGAdmin\n"
-printf "\thttp://localhost:3000/ - Backstage\n"
-printf "\thttp://localhost:3434/ - KeyCloak with admin:admin and some example users\n"
+printf "\thttp://localhost:3000/ - Backstage without OAuth Proxy\n"
+printf "\thttp://localhost:8080/ - KeyCloak with admin:admin and some example users\n"
+printf "\thttp://localhost:4180/ - Backstage with OAuth Proxy\n"

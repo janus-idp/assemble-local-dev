@@ -1,0 +1,53 @@
+injectRequestHeaders:
+- name: X-Forwarded-Groups
+  values:
+  - claim: groups
+- name: X-Forwarded-User
+  values:
+  - claim: user
+- name: X-Forwarded-Email
+  values:
+  - claim: email
+- name: X-Forwarded-Preferred-Username
+  values:
+  - claim: preferred_username
+- name: X-Forwarded-Access-Token
+  values:
+  - claim: access_token
+- name: X-OAUTH2-PROXY-ID-TOKEN
+  values:
+  - claim: access_token
+    prefix: "Bearer "
+- name: Authorization
+  values:
+    - claim: access_token
+      prefix: "Bearer "
+metricsServer:
+  BindAddress: ""
+  SecureBindAddress: ""
+  TLS: null
+providers:
+- clientID: assemble
+  clientSecret: LoLyCoApvATn6A0npiQpTlKERoEMqjIl
+  id: assemble
+  oidcConfig:
+    emailClaim: email
+    groupsClaim: groups
+    insecureAllowUnverifiedEmail: true
+    insecureSkipNonce: true
+    userIDClaim: email
+    issuerURL: http://keycloak:8080/realms/Assemble
+    audienceClaims: 
+      - aud
+  provider: oidc
+server:
+  BindAddress: 0.0.0.0:4180
+  SecureBindAddress: "-"
+upstreamConfig:
+  upstreams:
+  - flushInterval: 1s
+    id: backstage-ui
+    passHostHeader: true
+    path: /
+    proxyWebSockets: false
+    uri: http://backstage:4180/

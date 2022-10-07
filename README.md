@@ -10,7 +10,7 @@ A PostgreSQL v14.5 instance with 2 databases. One for Assemble and one for Keycl
 If you need to query the database, PG Admin is available at [http://localhost:9000](http://localhost:9000) using the username: postgres and password: postgres
 
 #### oAuth2/OIDC Provider
-Keycloak v19.0.1 is available at [http://localhost:3434](http://localhost:3434) using the username: admin and password: admin
+Keycloak v19.0.1 is available at [http://localhost:8080](http://localhost:8080) using the username: admin and password: admin
 
 The setup comes with a pre-configured client `Assemble` and 7 different users. One per persona.
 
@@ -23,10 +23,6 @@ The setup comes with a pre-configured client `Assemble` and 7 different users. O
 - audit
 
 The password is the username.
-
-#### ~~Assemble~~
-- ~~Assemble is available at http://localhost:3000~~
-- ~~APIs are available at http://localhost:8080~~
 
 ## Requirements
 
@@ -60,8 +56,13 @@ If they aren't you can set an environment variable `ASSEMBLE_BACKSTAGE` to the l
 You can use Docker or Podman.
 
 
-#### Start Assemble
+#### Add /etc/hosts entry
+Add an entry to /etc/hosts pointing keycloak to 127.0.0.1
+```
+127.0.0.1       localhost keycloak ## KEYCLOAK ENTRY HERE
+```
 
+#### Start Assemble
 You can start all the Assemble containers with the following command:
 
 ```shell
@@ -73,7 +74,7 @@ This should be able to detect if you are using Podman or Docker.  If it doesn't 
 
 Depending on your computer it could take several seconds/minutes. Once everything is started, you can access the app at:
 
-http://localhost:3000
+http://keycloak:4180
 
 #### Stop Assemble
 
@@ -90,6 +91,9 @@ podman-compose down --remove-orphans
 ```
 
 ## Troubleshooting
+
+### OAuth2-Proxy is not starting with podman
+podman-compose will copy the local `/etc/hosts` file into the container.  If you add the `keycloak` entry to localhost it will interfere with the container alias.  Thus you need to remove the `keycloak` alias from the local `/etc/host` file until after the container starts.  Once it start you can add it back.
 
 ### Error 'listen tcp4 0.0.0.0:5432: bind: address already in use'
 
