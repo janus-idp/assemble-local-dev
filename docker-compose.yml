@@ -61,12 +61,14 @@ services:
       APP_CONFIG_app_listen_host: 0.0.0.0
       APP_CONFIG_app_baseUrl: http://keycloak:4180
       APP_CONFIG_backend_listen_host: 0.0.0.0
+      APP_CONFIG_backend_baseUrl: http://keycloak:4180/api
       APP_CONFIG_backend_cors_origin: http://keycloak:4180
       APP_CONFIG_backend_database_client: pg
       APP_CONFIG_backend_database_connection_host: postgres
       APP_CONFIG_backend_database_connection_port: 5432
       APP_CONFIG_backend_database_connection_user: postgres
       APP_CONFIG_backend_database_connection_password: postgres
+      LOG_LEVEL: debug
     volumes:
       - ${BACKSTAGE:-../assemble-backstage}:/workspace${CONTAINER_VOLUME_OPTIONS}
     working_dir: /workspace

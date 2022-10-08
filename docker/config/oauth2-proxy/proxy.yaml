@@ -51,3 +51,10 @@ upstreamConfig:
     path: /
     proxyWebSockets: false
     uri: http://backstage:4180/
+  - flushInterval: 1s
+    id: backstage-api
+    passHostHeader: true
+    proxyWebSockets: false
+    path: /api/api/(.*)$
+    rewriteTarget: /api/$1
+    uri: http://backstage:7007/
