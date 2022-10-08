@@ -11,17 +11,10 @@ injectRequestHeaders:
 - name: X-Forwarded-Preferred-Username
   values:
   - claim: preferred_username
-- name: X-Forwarded-Access-Token
-  values:
-  - claim: access_token
 - name: X-OAUTH2-PROXY-ID-TOKEN
   values:
   - claim: access_token
     prefix: "Bearer "
-- name: Authorization
-  values:
-    - claim: access_token
-      prefix: "Bearer "
 metricsServer:
   BindAddress: ""
   SecureBindAddress: ""
