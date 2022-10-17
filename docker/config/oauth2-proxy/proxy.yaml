@@ -20,16 +20,16 @@ metricsServer:
   SecureBindAddress: ""
   TLS: null
 providers:
-- clientID: assemble
+- clientID: backstage
   clientSecret: LoLyCoApvATn6A0npiQpTlKERoEMqjIl
-  id: assemble
+  id: backstage
   oidcConfig:
     emailClaim: email
     groupsClaim: groups
     insecureAllowUnverifiedEmail: true
     insecureSkipNonce: true
     userIDClaim: email
-    issuerURL: http://keycloak:8080/realms/Assemble
+    issuerURL: http://keycloak:8080/realms/backstage
     audienceClaims: 
       - aud
   provider: oidc
