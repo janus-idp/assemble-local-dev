@@ -1,6 +1,6 @@
 {
   "id" : "aae34661-327c-4401-a662-c9f4f44e7a99",
-  "realm" : "Assemble",
+  "realm" : "backstage",
   "notBefore" : 0,
   "defaultSignatureAlgorithm" : "RS256",
   "revokeRefreshToken" : false,
@@ -54,7 +54,7 @@
       "attributes" : { }
     }, {
       "id" : "8b03fbe3-79bf-41c3-b22a-3ba9f16e91b8",
-      "name" : "default-roles-assemble",
+      "name" : "default-roles-backstage",
       "description" : "${role_default-roles}",
       "composite" : true,
       "composites" : {
@@ -328,7 +328,7 @@
   "groups" : [ ],
   "defaultRole" : {
     "id" : "8b03fbe3-79bf-41c3-b22a-3ba9f16e91b8",
-    "name" : "default-roles-assemble",
+    "name" : "default-roles-backstage",
     "description" : "${role_default-roles}",
     "composite" : true,
     "clientRole" : false,
@@ -382,7 +382,7 @@
     } ],
     "disableableCredentialTypes" : [ ],
     "requiredActions" : [ ],
-    "realmRoles" : [ "default-roles-assemble" ],
+    "realmRoles" : [ "default-roles-backstage" ],
     "notBefore" : 0,
     "groups" : [ ]
   }, {
@@ -405,7 +405,7 @@
     } ],
     "disableableCredentialTypes" : [ ],
     "requiredActions" : [ ],
-    "realmRoles" : [ "default-roles-assemble" ],
+    "realmRoles" : [ "default-roles-backstage" ],
     "notBefore" : 0,
     "groups" : [ ]
   }, {
@@ -428,7 +428,7 @@
     } ],
     "disableableCredentialTypes" : [ ],
     "requiredActions" : [ ],
-    "realmRoles" : [ "default-roles-assemble" ],
+    "realmRoles" : [ "default-roles-backstage" ],
     "notBefore" : 0,
     "groups" : [ ]
   }, {
@@ -451,7 +451,7 @@
     } ],
     "disableableCredentialTypes" : [ ],
     "requiredActions" : [ ],
-    "realmRoles" : [ "default-roles-assemble" ],
+    "realmRoles" : [ "default-roles-backstage" ],
     "notBefore" : 0,
     "groups" : [ ]
   }, {
@@ -474,7 +474,7 @@
     } ],
     "disableableCredentialTypes" : [ ],
     "requiredActions" : [ ],
-    "realmRoles" : [ "default-roles-assemble" ],
+    "realmRoles" : [ "default-roles-backstage" ],
     "notBefore" : 0,
     "groups" : [ ]
   }, {
@@ -497,7 +497,7 @@
     } ],
     "disableableCredentialTypes" : [ ],
     "requiredActions" : [ ],
-    "realmRoles" : [ "default-roles-assemble" ],
+    "realmRoles" : [ "default-roles-backstage" ],
     "notBefore" : 0,
     "groups" : [ ]
   }, {
@@ -520,7 +520,7 @@
     } ],
     "disableableCredentialTypes" : [ ],
     "requiredActions" : [ ],
-    "realmRoles" : [ "default-roles-assemble" ],
+    "realmRoles" : [ "default-roles-backstage" ],
     "notBefore" : 0,
     "groups" : [ ]
   } ],
@@ -539,12 +539,12 @@
     "clientId" : "account",
     "name" : "${client_account}",
     "rootUrl" : "${authBaseUrl}",
-    "baseUrl" : "/realms/Assemble/account/",
+    "baseUrl" : "/realms/backstage/account/",
     "surrogateAuthRequired" : false,
     "enabled" : true,
     "alwaysDisplayInConsole" : false,
     "clientAuthenticatorType" : "client-secret",
-    "redirectUris" : [ "/realms/Assemble/account/*" ],
+    "redirectUris" : [ "/realms/backstage/account/*" ],
     "webOrigins" : [ ],
     "notBefore" : 0,
     "bearerOnly" : false,
@@ -569,12 +569,12 @@
     "clientId" : "account-console",
     "name" : "${client_account-console}",
     "rootUrl" : "${authBaseUrl}",
-    "baseUrl" : "/realms/Assemble/account/",
+    "baseUrl" : "/realms/backstage/account/",
     "surrogateAuthRequired" : false,
     "enabled" : true,
     "alwaysDisplayInConsole" : false,
     "clientAuthenticatorType" : "client-secret",
-    "redirectUris" : [ "/realms/Assemble/account/*" ],
+    "redirectUris" : [ "/realms/backstage/account/*" ],
     "webOrigins" : [ ],
     "notBefore" : 0,
     "bearerOnly" : false,
@@ -686,12 +686,12 @@
     "clientId" : "security-admin-console",
     "name" : "${client_security-admin-console}",
     "rootUrl" : "${authAdminUrl}",
-    "baseUrl" : "/admin/Assemble/console/",
+    "baseUrl" : "/admin/backstage/console/",
     "surrogateAuthRequired" : false,
     "enabled" : true,
     "alwaysDisplayInConsole" : false,
     "clientAuthenticatorType" : "client-secret",
-    "redirectUris" : [ "/admin/Assemble/console/*" ],
+    "redirectUris" : [ "/admin/backstage/console/*" ],
     "webOrigins" : [ "+" ],
     "notBefore" : 0,
     "bearerOnly" : false,
@@ -730,8 +730,8 @@
   },
   {
     "id": "9538af60-93a7-4e6f-b5e6-a5a95756bc75",
-    "clientId": "assemble",
-    "name": "assemble",
+    "clientId": "backstage",
+    "name": "backstage",
     "description": "",
     "rootUrl": "",
     "adminUrl": "",
@@ -740,11 +740,12 @@
     "enabled": true,
     "alwaysDisplayInConsole": true,
     "clientAuthenticatorType": "client-secret",
-    "secret": "**********",
+    "secret": "LoLyCoApvATn6A0npiQpTlKERoEMqjIl",
     "redirectUris": [
-      "http://localhost:3000"
+      "http://localhost:4180/*",
+      "http://keycloak:4180/*"
     ],
-    "webOrigins": [],
+    "webOrigins": [ "http://localhost:4180", "http://keycloak:4180", "http://localhost:7007" ],
     "notBefore": 0,
     "bearerOnly": false,
     "consentRequired": false,
@@ -830,38 +831,13 @@
       "resources": [
         {
           "name": "Default Resource",
-          "type": "urn:assemble:resources:default",
+          "type": "urn:backstage:resources:default",
           "ownerManagedAccess": false,
           "attributes": {},
           "_id": "77844700-440d-48e4-a4f1-4c1014e30ed9",
           "uris": [
             "/*"
           ]
-        }
-      ],
-      "policies": [
-        {
-          "id": "b5723da2-899f-49b2-878f-eefe62275f5d",
-          "name": "Default Policy",
-          "description": "A policy that grants access only for users within this realm",
-          "type": "js",
-          "logic": "POSITIVE",
-          "decisionStrategy": "AFFIRMATIVE",
-          "config": {
-            "code": "// by default, grants any permission associated with this policy\n$evaluation.grant();\n"
-          }
-        },
-        {
-          "id": "44cf2d61-f0ea-40d0-b0d8-388756249364",
-          "name": "Default Permission",
-          "description": "A permission that applies to the default resource type",
-          "type": "resource",
-          "logic": "POSITIVE",
-          "decisionStrategy": "UNANIMOUS",
-          "config": {
-            "defaultResourceType": "urn:assemble:resources:default",
-            "applyPolicies": "[\"Default Policy\"]"
-          }
         }
       ],
       "scopes": [],
