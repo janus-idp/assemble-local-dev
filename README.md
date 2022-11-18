@@ -62,6 +62,14 @@ Add an entry to /etc/hosts pointing keycloak to 127.0.0.1
 127.0.0.1       localhost keycloak ## KEYCLOAK ENTRY HERE
 ```
 
+#### Add oauth2Proxy as a provider
+In the `app-config.yaml` file of the `assemble-backstage` folder, update the auth configuration to include oauth2Proxy as a provider.
+```
+auth:
+  providers:
+    oauth2Proxy: {}
+```
+
 #### Start Assemble
 You can start all the Assemble containers with the following command:
 
