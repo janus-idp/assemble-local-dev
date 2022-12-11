@@ -68,6 +68,11 @@ services:
       APP_CONFIG_backend_database_connection_port: 5432
       APP_CONFIG_backend_database_connection_user: postgres
       APP_CONFIG_backend_database_connection_password: postgres
+      APP_CONFIG_catalog_providers_keycloakOrg_default_baseUrl: http://keycloak:8080
+      APP_CONFIG_catalog_providers_keycloakOrg_default_loginRealm: backstage
+      APP_CONFIG_catalog_providers_keycloakOrg_default_realm: backstage
+      APP_CONFIG_catalog_providers_keycloakOrg_default_clientId: backstage
+      APP_CONFIG_catalog_providers_keycloakOrg_default_clientSecret: LoLyCoApvATn6A0npiQpTlKERoEMqjIl
       LOG_LEVEL: debug
     volumes:
       - ${BACKSTAGE:-../assemble-backstage}:/workspace${CONTAINER_VOLUME_OPTIONS}

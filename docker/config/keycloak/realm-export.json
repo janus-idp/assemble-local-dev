@@ -371,7 +371,7 @@
     "emailVerified" : true,
     "firstName" : "",
     "lastName" : "",
-    "email" : "audit@halkyon.io",
+    "email" : "audit@janus-idp.io",
     "credentials" : [ {
       "id" : "678b36d8-d2a6-466b-b544-607dbb930ee6",
       "type" : "password",
@@ -394,7 +394,7 @@
     "emailVerified" : true,
     "firstName" : "",
     "lastName" : "",
-    "email" : "dev@halkyon.io",
+    "email" : "dev@janus-idp.io",
     "credentials" : [ {
       "id" : "a9077216-e852-4294-b9b0-5b590c345b4b",
       "type" : "password",
@@ -417,7 +417,7 @@
     "emailVerified" : true,
     "firstName" : "",
     "lastName" : "",
-    "email" : "dev_lead@halkyon.io",
+    "email" : "dev_lead@janus-idp.io",
     "credentials" : [ {
       "id" : "5cf7ced8-8bca-4428-99f0-57ef1231fdc8",
       "type" : "password",
@@ -440,7 +440,7 @@
     "emailVerified" : true,
     "firstName" : "",
     "lastName" : "",
-    "email" : "manager@halkyon.io",
+    "email" : "manager@janus-idp.io",
     "credentials" : [ {
       "id" : "35541863-20e2-46ad-957e-9692b473e55f",
       "type" : "password",
@@ -463,7 +463,7 @@
     "emailVerified" : true,
     "firstName" : "",
     "lastName" : "",
-    "email" : "prod_approver@halkyon.io",
+    "email" : "prod_approver@janus-idp.io",
     "credentials" : [ {
       "id" : "3c6fa3e2-d563-46b5-857d-00eee0fd4d13",
       "type" : "password",
@@ -486,7 +486,7 @@
     "emailVerified" : true,
     "firstName" : "",
     "lastName" : "",
-    "email" : "prod_deployer@halkyon.io",
+    "email" : "prod_deployer@janus-idp.io",
     "credentials" : [ {
       "id" : "ee87cd61-3945-4d4b-a7e7-1df447910e12",
       "type" : "password",
@@ -509,7 +509,7 @@
     "emailVerified" : true,
     "firstName" : "",
     "lastName" : "",
-    "email" : "qa@halkyon.io",
+    "email" : "qa@janus-idp.io",
     "credentials" : [ {
       "id" : "bbb96082-4735-44b5-a8df-89305ee235e4",
       "type" : "password",
@@ -521,6 +521,24 @@
     "disableableCredentialTypes" : [ ],
     "requiredActions" : [ ],
     "realmRoles" : [ "default-roles-backstage" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "9fc116ad-6fd2-4dd3-97be-60e1cb70311c",
+    "createdTimestamp" : 1670720603550,
+    "username" : "service-account-backstage",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "serviceAccountClientId" : "backstage",
+    "credentials" : [ ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-backstage" ],
+    "clientRoles" : {
+      "realm-management" : [ "query-users", "view-users", "query-groups" ],
+      "backstage" : [ "uma_protection" ]
+    },
     "notBefore" : 0,
     "groups" : [ ]
   } ],
